@@ -1,0 +1,141 @@
+
+body {
+    padding: 50px 0;
+    background-color: #755e96;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='28' height='49' viewBox='0 0 28 49'%3E%3Cg fill-rule='evenodd'%3E%3Cg id='hexagons' fill='%239C92AC' fill-opacity='0.36' fill-rule='nonzero'%3E%3Cpath d='M13.99 9.25l13 7.5v15l-13 7.5L1 31.75v-15l12.99-7.5zM3 17.9v12.7l10.99 6.34 11-6.35V17.9l-11-6.34L3 17.9zM0 15l12.98-7.5V0h-2v6.35L0 12.69v2.3zm0 18.5L12.98 41v8h-2v-6.85L0 35.81v-2.3zM15 0v7.5L27.99 15H28v-2.31h-.01L17 6.35V0h-2zm0 49v-8l12.99-7.5H28v2.31h-.01L17 42.15V49h-2z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+}
+h1 {
+    color: white;
+    text-shadow: 1px 1px 2px black; 
+    text-align: center;
+    margin-bottom: 18px;
+}
+header {
+    margin-bottom: 20px;
+    text-align: center;
+    img {
+        max-width: 120px;
+    }
+}
+.content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 7px;
+    box-shadow: 1px 1px 4px rgba(0,0,0,0.2);
+    .table {
+        margin-bottom: 0;
+        td,th {
+            vertical-align: middle
+        }
+        .mRight {
+            margin-right: 20px;
+        }
+    }
+}
+.message {
+    text-align: center;
+    &:only-child {
+        margin: 0;
+    }
+}
+.btn-sm {
+    margin-right: 8px;
+}
+.form-inline {
+    margin: 10px auto;
+    width: 235px;
+    .btn-default {
+        margin-left: 5px;
+    }
+}
+.credits {
+    text-align: center;
+    padding: 70px;
+    opacity: .5;
+    transition: opacity 0.3s linear;
+    &:hover {
+        opacity: 1;
+    }
+    a {
+        color: #4b4668;
+    }
+}
+
+/* Simple show/hide */
+// .panel {
+//     .panel-body {
+//         display: none;
+//     }
+//     &.is-expanded {
+//         .panel-body {
+//             display: block;
+//         }
+//     }
+// }
+
+/* Simple CSS transition of max-height */
+// .panel {
+//     .panel-collapse {
+//         max-height: 0;
+//         overflow: hidden;
+//         transition: max-height 0.5s cubic-bezier(.525,.66,.495,1.4);  
+//     }
+//     &.is-expanded {
+//         .panel-collapse {
+//             max-height: 200px
+//         }
+//     }
+// }
+
+/* JS calculated height - the most accurate */
+.panel {
+    .panel-heading {
+        cursor: pointer;
+    }
+    .panel-collapse {
+        overflow: hidden;
+        transition: height 0.3s ease-out;  //в этом случае мы не устанавливаем высоту в CSS а рассчитываем ее в JS
+    }
+    .panel-body {
+        border: none !important;
+    }
+    h2 {margin-top: 5px !important;}
+}
+
+
+.loader {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 100px;
+    height: 100px;
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    visibility: hidden;
+    transition-delay: 0.2s;
+    .icon {
+        width: 100px;
+        height: 100px;
+        position: absolute;
+        left: 0;
+        top: 0;
+        background: url('../images/ico_loader.svg') no-repeat 0 0;
+        background-size: 248px 248px;
+    }
+}
+.is-loading { //добавляем класс с анимацией родительскому элементу, если хотим
+    .loader {
+        opacity: 1;
+        visibility: visible;
+        transition: opacity 0.3s linear, visibility 0.3s linear;
+        z-index: 3;
+        .icon {
+            animation: spin 500ms infinite linear;
+        }
+    }
+}
+
+@keyframes spin {
+    0% { transform: rotate(0); transform-origin: center center; }
+    100% { transform: rotate(360deg); transform-origin: center center; }
+} //
