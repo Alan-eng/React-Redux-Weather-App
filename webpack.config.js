@@ -35,7 +35,7 @@ module.exports = {
                 use: 'url-loader?limit=10000&name=fonts/[name].[ext]',
             },
             {
-                test: /\.(ttf|eot|svg)(\?[\s\S]+)?$/,
+                test: /\.(jpg|gif|png|ttf|eot|svg)(\?[\s\S]+)?$/,
                 use: 'file-loader?name=fonts/[name].[ext]',
             },
 
